@@ -1,5 +1,6 @@
 import nltk
 import sys
+import re
 from nltk.tokenize import TweetTokenizer
 from nltk.metrics import *
 
@@ -22,15 +23,17 @@ for line in lines:
     corpus += line + ' '
 
 # tokenize the corpus using nltk's tokenizer
-tokens = tokenizer.tokenize(corpus)
+# tokens = tokenizer.tokenize(corpus)
+tokens = re.findall(r"[\w']+|[.,!?;:()]",corpus)
 
-mispellings = ['']
+mispellings = []
 for token in tokens:
     if (token not in dictionary) and (len(token) != 1) and (token not in mispellings):
         mispellings.append(token)
 
 for word in mispellings:
-    output = word
+    output = "" 
     for ref in dictionary:
         if(edit_distance(word, ref) < 2):
             output += ref + ' '
+    print"SUGGESTION(S) FOR:",word,"\n>>",output,"\n"
