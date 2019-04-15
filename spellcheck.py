@@ -25,7 +25,7 @@ tokens = re.findall(r"[\w']+|[.,!?;:()]",corpus)
 
 mispellings = []
 for token in tokens:
-    if (token not in dictionary) and (token.lower() not in dictionary) and ((token.lower()[0:len(token)-1]) not in dictionary) and (len(token) != 1) and (token not in mispellings):
+    if (token not in dictionary) and (token.lower() not in dictionary) and (len(token) != 1 and token not in ['a', 'o', 'A', 'I', 'O']) and (token not in mispellings):
         mispellings.append(token)
 
 for word in mispellings:
@@ -33,6 +33,4 @@ for word in mispellings:
     recommendations = ''
     for match in matches:
     	recommendations += match + ', '
-    print "SUGGESTION(S) FOR:",word,"\n>>",recommendations[0:len(recommendations)-2]
-    print ''
-
+    print (word + ': ' + recommendations[0:len(recommendations)-2])
