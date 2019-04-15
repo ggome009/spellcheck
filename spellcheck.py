@@ -29,12 +29,6 @@ for token in tokens:
         mispellings.append(token)
 
 for word in mispellings:
-    for ref in dictionary:
-        if(edit_distance(word, ref) < 2):
-            output += ref + ' '
-    print"SUGGESTION(S) FOR:",word,"\n>>",output,"\n"
-
-for word in mispellings:
     matches = difflib.get_close_matches(word, dictionary)
     recommendations = ''
     for match in matches:
