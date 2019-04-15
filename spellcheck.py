@@ -3,7 +3,7 @@ import re
 import difflib
 
 # open linux dictionary text file and initialize it as a set
-dictionary = set(line.strip() for line in open('dict.txt', 'r'))
+dictionary = set(line.strip() for line in open('en_US.txt', 'r'))
 
 # ('drum' in dictionary) returns true
 # ('nxjgpwe' in dictionary) returns false
