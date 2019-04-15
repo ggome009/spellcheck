@@ -34,4 +34,5 @@ for word in mispellings:
     for match in matches:
     	recommendations += match + ', '
     print "SUGGESTION(S) FOR:",word,"\n>>",recommendations[0:len(recommendations)-2]
+    print ''
 
